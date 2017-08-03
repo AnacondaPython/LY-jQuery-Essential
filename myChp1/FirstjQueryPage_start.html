@@ -12,6 +12,15 @@
     $("document").ready(function(){
       $("#content").append("<p>The page just loaded</p>");
     })
+
+    // Inserting content the old way using the DOM
+    window.addEventListener("DOMContentLoaded", function(evt) {
+        var elem = document.getElementById("content");
+        var para = document.createElement("p");
+        var text = document.createTextNode("The page just loaded.");
+        para.appendChild(text);
+        elem.appendChild(para);
+    });
     </script>
 </head>
 
