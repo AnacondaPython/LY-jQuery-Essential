@@ -9,19 +9,19 @@
         $("document").ready(function() {
         // The child selector "parent > child" selects "child" elements that are
         // immediate descendants of the "parent"
-        //$("div > p").css("border", "3px solid red");
+        $("div > p").css("border", "3px solid green");
 
         // The descendant selector "ancestor descendant" selects "descendant" elements
         // as long as they have an "ancestor" element somewhere above them
-        //$("div p.a").css("border", "3px solid red");
+        $("div p.a").css("border", "3px solid purple");
 
         // The next adjacent selector "prev + next" selects the "next" element if it
         // is immediately preceded by a "prev" element
-        //$("ul + div").css("border", "3px solid red");
+        $("ul + div").css("border", "3px solid blue");
 
         // Next sibling selector "prev ~ siblings" selects all "siblings" elements that come
         // after a "prev" element
-        //$("#para1 ~ p").css("border", "3px solid red");
+        $("#para1 ~ p").css("border", "3px solid red");
     });
 
     </script>
