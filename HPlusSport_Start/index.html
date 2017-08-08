@@ -8,11 +8,26 @@
   <script type="text/javascript" src="../jquery-3.2.1.js"></script>
   <script type ="text/javascript">
       $("document").ready(function(){
+        //Change color of background colors
         $("h2[data-type=mineralwater]").css("background-color","blue"); //blue
         $("h2[data-type=proteinbar]").css("background-color","purple");  //purple
         $("h2[data-type=vitamin]").css("background-color", "green"); //green
+
+        //Event Triggers
+
+
+        //Hide selected filter items
+        $("#products h2.product-type[data-type=mineralwater]")
+        $("#products h2.product-type[data-type=proteinbar]")
+        $("#products h2.product-type[data-type=vitamin]")
+
       });
   </script>
+  <style>
+    .hideItem {
+      display:none;
+    }
+  </style>
 </head>
 <body>
 
@@ -54,6 +69,12 @@
     <h2 class="headline">Products</h2>
     <p>H+ Sport is <em>dedicated to creating</em> eco-friendly, high-quality, nutrient-rich, nutritional products that <em>enhance active lifestyles</em>. We <a href="#guarantee">guarantee</a> it. Take a look at some of our products.</p>
   </div><!-- container -->
+  <!-- https://jsfiddle.net/FmV9k/ -->
+  <form>
+    <li><input type="checkbox" name="cbVitamins">
+    <li><input type="checkbox" name="cbMineralWater">
+    <li><input type="checkbox" name="cbProtein">
+  </form>
   <ul class="product-list">
     <li class="product-item" data-prod_id="V-A1037">
         <img class="product-image" src="images/products/vitamin-a.jpg" alt="Vitamin A - Product Photo">
