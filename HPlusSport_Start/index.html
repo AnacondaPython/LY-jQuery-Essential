@@ -15,13 +15,13 @@
 
         //Event Triggers
         $("#cbVitamins").click(function(evt){
-          $("#products h2.product-type[data-type=vitamin]").parent().addClass("hideItem");
+          $("#products h2.product-name[data-type=vitamin]").parent().toggle();
         });
         $("#cbMinerals").click(function(evt){
-          $("#products h2.product-type[data-type=mineralwater]").parent().addClass("hideItem");
+          $("#products h2.product-name[data-type=mineralwater]").parent().toggle();
         });
         $("#cbProtein").click(function(evt){
-          $("#products h2.product-type[data-type=proteinbar]").addClass("hideItem");
+          $("#products h2.product-name[data-type=proteinbar]").parent().toggle();
         });
 
         //Hide selected filter items
