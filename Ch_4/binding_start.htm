@@ -7,7 +7,27 @@
     <script type="text/javascript" src="../jquery-3.2.1.js"></script>
     <script type="text/javascript">
         $(function() {
+          //When mouseover, red background apply
+          $("#evtTarget").on("mouseover mouseleave", highlight);
+
+          //When click box, dsiable red background hover
+          $("#evtTarget").on("click", function (evt){
+            //anonymous javascript function
+            $("#evtTarget").off("mouseover mouseleave", highlight);
+            $("#evtTarget").html("<p>Hover effect shut off</p>");
+            $("#evtTarget").removeClass("highlighted");
+
+          })
+
+          // Shows last key pressed
+          $("#textEntry").on("keypress", function (evt){
+            $("#keyPress").text(String.fromCharCode(evt.charCode));
+          })
         });
+
+        function highlight() {
+          $("#evtTarget").toggleClass("highlighted");
+        }
     </script>
     <style type='text/css'>
         .highlighted {
