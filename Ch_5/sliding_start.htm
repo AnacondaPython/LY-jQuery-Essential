@@ -8,12 +8,19 @@
     <script type="text/javascript">
         $(function() {
             $("#slideup").click(function() {
+              $("#theDiv").slideUp(1000);
             });
             $("#slidedown").click(function() {
+              $("#theDiv").slideDown(200);
             });
             $("#toggle").click(function() {
+              $("#theDiv").slideToggle("slow", onCompletion);
             });
         });
+
+        function onCompletion(){
+          $(this).text("Animation Complete");
+        }
     </script>
     <style type="text/css">
         div#theDiv {
