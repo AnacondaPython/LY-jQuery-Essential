@@ -5,6 +5,58 @@
   <title>HPlus Sport</title>
   <link rel="stylesheet" href="css/style.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="../jquery-3.2.1.js"></script>
+  <script>
+      $(function() {
+          // extract the query string parameters
+          //2nd product as example
+          //http://127.0.0.1:8080/HPlusSport_Start/product.html?prodName=Vitamin-B%20Complex&prodID=V-BC2178
+          //http://127.0.0.1:8080/HPlusSport_Start/product.html  → is 51 character
+          var paramLoc = window.location.href.indexOf("?"); //51
+          var paramStr = window.location.href.slice(paramLoc+1);  //prodName=Vitamin-B%20Complex&prodID=V-BC2178
+          var prodName = "";
+          var prodID = "";
+
+          //Start position for prodName extract
+          var i = paramStr.indexOf("prodName=")+9;
+
+          //grab ProdName from URLquery
+          for (var j = i; j < paramStr.length; j++) {
+              if (paramStr.charAt(j) == "&")
+                  break;
+              prodName += paramStr.charAt(j);
+          }
+          console.log(prodName); //Vitamin-B%20Complex
+
+          //grab prodID from URLquery
+          var i = paramStr.indexOf("prodID=")+7;
+          for (var j = i; j < paramStr.length; j++) {
+              if (paramStr.charAt(j) == "&")
+                  break;
+              prodID += paramStr.charAt(j);
+          }
+          console.log(prodID); //V-BC2178
+
+          prodName = decodeURIComponent(prodName); //Vitamin-B Complex
+          prodID = decodeURIComponent(prodID); //B-BC2178
+
+          // set the product name in the proper placeholder
+          $("#productName").text(prodName);
+
+          // retrieve the product information via AJAX
+          $.getJSON("product-data.json")
+              .done(function(prodDataz) {
+                  // use the prodID to get this product information
+                  prodDataz.products.forEach(function(elem) {
+                      if (elem.prod_id == prodID) {
+                          $("#productStock").text(elem.in_stock);
+                          $("#productPrice").text(elem.retail_price);
+                          $("#productDesc").text(elem.description);
+                      }
+                  });
+              });
+      })
+  </script>
 </head>
 <body>
 

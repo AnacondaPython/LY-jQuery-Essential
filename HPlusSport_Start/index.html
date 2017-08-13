@@ -24,8 +24,17 @@
           $("#products h2.product-name[data-type=proteinbar]").parent().toggle();
         });
 
-        //Hide selected filter items
+        //Unique URLs for each Product, Wrap Full Image with Product.html link
+        $(".product-item").each(function() {
+          var prodName = encodeURIComponent($(this).children("h2").text());
+          var prodID = encodeURIComponent($(this).data("prod_id"));
 
+          console.log(prodName);
+          console.log(prodID);
+
+          var link = $("<a href='product.html?prodName=" + prodName + "&prodID=" + prodID + "'/>");
+          $(this).children("img").wrap(link);
+        })
 
 
       });
