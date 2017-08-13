@@ -7,12 +7,15 @@
     <script type="text/javascript" src="../jquery-3.2.1.js"></script>
     <script type="text/javascript">
         $(function() {
+          //Hover, click, dblclick event handler
           $("#evtTarget").hover(highlight, highlight);
           $("#evtTarget").click(fnClick);
           $("#evtTarget").dblclick(fnClick2);
 
+          //Windows Event Handler shows browser resize
           $(window).resize(fnResize);
 
+          //Makes mouse cursor look like hand when you click first time
           $("#evtTarget").one("click", function(){
             $(this).css({
               borderWidth: "4px",
@@ -21,6 +24,7 @@
           })
         });
 
+        //Event handlers callers
         function highlight() {
           $("#evtTarget").toggleClass("highlighted");
         }

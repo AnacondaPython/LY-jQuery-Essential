@@ -6,10 +6,17 @@
     <link rel="stylesheet" href="../style.css" />
     <script type="text/javascript" src="../jquery-3.2.1.js"></script>
     <script type="text/javascript">
+
+        //----------------------------------
+        //Event Handler
+        //----------------------------------
         $(function() {
+
+          //Specific Box 1 2 3 Event Handlers
+          //Supply data object, contains name property {name: div1} to pass onto function
             $("#Div1").on("click dblclick", { name: "Div 1" }, function(evt) {
                 updateEventDetails(evt);
-                evt.stopPropagation();
+                evt.stopPropagation(); // prevents parent handlers being notified of event
             });
             $("#Div2").on("click dblclick", { name: "Div 2" }, function(evt) {
                 updateEventDetails(evt);
@@ -19,6 +26,8 @@
                 updateEventDetails(evt);
                 evt.stopPropagation();
             });
+
+            //General Event Handlers for all 3 boxes
             $("div.smallbox").on("mouseenter", function(evt) {
                 updateEventDetails(evt);
                 evt.stopPropagation();
@@ -32,10 +41,38 @@
                 evt.stopPropagation();
             });
 
+            //Event Handler for text input
             $("#input1").keypress(updateEventDetails);
         });
 
+        //----------------------------------
+        //Event Helpers
+        //----------------------------------
         function updateEventDetails(evt) {
+          $(".detailLine span[id]").text(""); //Remove previous data shown on all fields
+
+          $("#evtType").text(evt.type);  //"mouseleave", "mousemove", "mouseenter", "click", "dblclick"
+          $("#evtWhich").text(evt.which); //"1" if mouseclick, ASCII text input: "65"="A", 97="a"
+          $("#evtTarget").text(evt.target.id); //"Div1","Div2","Div3" - HTML ID values
+
+          //"DIV#content" when outside 3 boxes
+          if (evt.relatedTarget) {
+            $("#evtRelated").text(evt.relatedTarget.tagName + "#" + evt.relatedTarget.id);
+          }
+
+          $("#evtMetaKey").text(evt.metaKey); // Triggers on WIN key when held down, does not work for me
+
+          //pageX and PageY are based on full rendered viewport even hidden parts
+          $("#evtPageX").text(evt.pageX);
+          $("#evtPageY").text(evt.pageY);
+
+          //ClientX and Client Y are based on visible coordinates of page
+          $("#evtClientX").text(evt.clientX);
+          $("#evtClientY").text(evt.clientY);
+
+          //Data object passed from event handler
+          if (evt.data)
+            $("#evtData").text(evt.data.name); // "Div 1", "Div 2", "Div 3"
         }
     </script>
 </head>
