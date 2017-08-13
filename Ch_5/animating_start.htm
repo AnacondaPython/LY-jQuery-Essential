@@ -8,12 +8,21 @@
     <script type="text/javascript">
         $(function() {
             $("#right").click(function() {
+              $("#theDiv").animate({width: "500px"}, 1000)
             });
             $("#text").click(function() {
+              $("#theDiv").animate({fontSize:"24pt"},1000);
             });
             $("#move").click(function() {
+              $("#theDiv").animate({left: "500"},1000, "linear");
             });
+            //Multiproperty at same time
             $("#all").click(function() {
+              $("#theDiv").animate({
+                left: "+=500", //keep moving box to right on new click
+                fontSize: "3em", //24 px
+                width: "500px" //200% works as well
+              }, 1000, "swing");
             });
         });
     </script>
