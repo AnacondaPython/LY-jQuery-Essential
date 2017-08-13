@@ -47,11 +47,13 @@
           $.getJSON("product-data.json")
               .done(function(prodDataz) {
                   // use the prodID to get this product information
+                  //Loop through each object in JSON file until prodID match
+                  //products is JSON array list name
                   prodDataz.products.forEach(function(elem) {
                       if (elem.prod_id == prodID) {
-                          $("#productStock").text(elem.in_stock);
-                          $("#productPrice").text(elem.retail_price);
-                          $("#productDesc").text(elem.description);
+                          $("#productStock").text(elem.in_stock); //obj prop
+                          $("#productPrice").text(elem.retail_price); //obj prop
+                          $("#productDesc").text(elem.description); //obj prop
                       }
                   });
               });

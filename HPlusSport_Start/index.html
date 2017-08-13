@@ -26,14 +26,12 @@
 
         //Unique URLs for each Product, Wrap Full Image with Product.html link
         $(".product-item").each(function() {
-          var prodName = encodeURIComponent($(this).children("h2").text());
-          var prodID = encodeURIComponent($(this).data("prod_id"));
-
-          console.log(prodName);
-          console.log(prodID);
+          var prodName = encodeURIComponent($(this).children("h2").text()); // Vitamin-B%20Complex
+          var prodID = encodeURIComponent($(this).data("prod_id")); // V-BC2178
 
           var link = $("<a href='product.html?prodName=" + prodName + "&prodID=" + prodID + "'/>");
-          $(this).children("img").wrap(link);
+          $(this).children("img").wrap(link); //click image to new unique product page
+          //http://127.0.0.1:8080/HPlusSport_Start/product.html?prodName=Vitamin-B%20Complex&prodID=V-BC2178
         })
 
 
