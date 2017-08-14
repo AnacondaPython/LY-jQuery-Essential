@@ -18,12 +18,16 @@
         });
 
         function getData() {
+          // $.get("testdata.txt", successFn);  //This one outputs data from testdata.txt
+          $("#ajaxContent").load("testdata.html #p2"); //We can load a specific set of data from file id=#p2
         }
 
+        //success function
         function successFn(result) {
             console.log("Setting result");
             $("#ajaxContent").append(result);
         }
+        //error function
         function errorFn(xhr, status, strErr) {
             alert(strErr);
         }
