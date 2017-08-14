@@ -14,11 +14,30 @@
     <script type="text/javascript" src="../jquery-3.2.1.js"></script>
     <script type="text/javascript">
         $("document").ready(function() {
+          $(document).ajaxStart(function (){
+            console.log("AJAX starting");
+          });
+          $(document).ajaxStop(function(){
+            console.log("AJAX request ended");
+          });
+          $(document).ajaxSend(function(evt,jqXHR,options){
+            console.log("About to send request for data");
+          });
+          $(document).ajaxComplete(function(evt,jqXHR,options){
+            console.log("Everythings finished");
+          })
+          $(document).ajaxError(function(evt, jqHXR, settings, err){
+            console.log("Hmm. Something went wrong:" + err);
+          });
+          $(document).ajaxSuccess(function(evt,jqXHR, options){
+            console.log("Looks like everything works");
+          })
             getData();
         });
 
         function getData() {
             $.get("testdata.txt", successFn);
+            // $.get("testdata2.txt", successFn); //Specify bad data to show error
         }
 
         function successFn(result) {
